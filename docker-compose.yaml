@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "project3"
+      POSTGRES_USER: "abobus"
+      POSTGRES_PASSWORD: "12345"
+    volumes:
+      -  ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "6000:5432"
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+
